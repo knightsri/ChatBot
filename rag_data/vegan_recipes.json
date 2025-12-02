@@ -1,0 +1,44 @@
+{
+  "name": "Best Vegan Recipes",
+  "description": "Delicious plant-based recipes and cooking tips",
+  "icon": "🥗",
+  "default_mode": "learn",
+  "quiz_questions": 10,
+  "documents": [
+    {
+      "id": "vegan_breakfast",
+      "title": "Vegan Breakfast Ideas",
+      "source": "https://minimalistbaker.com/vegan-breakfast-recipes/",
+      "content": "Start your day with hearty vegan breakfasts. Overnight oats: combine rolled oats, plant milk, chia seeds, maple syrup, and vanilla; refrigerate overnight; top with fresh berries. Tofu scramble: crumble firm tofu, sauté with turmeric, nutritional yeast, garlic, and vegetables for an egg-like texture. Banana pancakes: blend oats into flour, mix with mashed banana, plant milk, and baking powder; cook on a griddle. Smoothie bowls: blend frozen açaí or berries with banana and a splash of oat milk; top with granola, coconut, and fresh fruit.",
+      "summary": "Quick and nutritious plant-based breakfast recipes to start your morning."
+    },
+    {
+      "id": "vegan_mains",
+      "title": "Hearty Vegan Main Dishes",
+      "source": "https://www.noracooks.com/vegan-dinner-recipes/",
+      "content": "Chickpea curry: sauté onion, garlic, and ginger; add curry powder, cumin, and turmeric; stir in chickpeas, coconut milk, and diced tomatoes; simmer 20 minutes; serve over rice. Lentil bolognese: cook lentils until tender; sauté with marinara sauce, mushrooms, and Italian herbs; serve over pasta. Buddha bowls: arrange quinoa, roasted sweet potato, sautéed kale, edamame, avocado, and tahini dressing in a bowl. Stuffed bell peppers: fill with a mixture of rice, black beans, corn, tomatoes, and spices; bake at 375°F for 30 minutes.",
+      "summary": "Satisfying plant-based dinner recipes that are filling and flavorful."
+    },
+    {
+      "id": "vegan_desserts",
+      "title": "Decadent Vegan Desserts",
+      "source": "https://lovingitvegan.com/vegan-dessert-recipes/",
+      "content": "Chocolate avocado mousse: blend ripe avocados, cocoa powder, maple syrup, and vanilla until silky smooth; chill before serving. Vegan brownies: use flax eggs (1 tbsp ground flax + 3 tbsp water), coconut oil, and almond flour for fudgy results. Nice cream: freeze ripe bananas, then blend until creamy; add cocoa, peanut butter, or berries for flavors. Coconut whipped cream: refrigerate full-fat coconut cream overnight; whip the solid part with powdered sugar and vanilla. Energy balls: mix dates, nuts, oats, and cocoa in a food processor; roll into balls.",
+      "summary": "Indulgent dairy-free and egg-free dessert recipes."
+    },
+    {
+      "id": "vegan_protein",
+      "title": "Plant-Based Protein Sources",
+      "source": "https://www.healthline.com/nutrition/vegan-protein-sources",
+      "content": "Tofu (10g protein per 100g): versatile, absorbs flavors well, works in stir-fries, scrambles, and desserts. Tempeh (19g per 100g): fermented soybeans with nutty flavor, great grilled or crumbled. Seitan (25g per 100g): wheat gluten with meaty texture, ideal for sandwiches and stews. Lentils (9g per 100g cooked): quick-cooking, perfect for soups and curries. Chickpeas (7g per 100g): great roasted, in hummus, or curries. Edamame (11g per 100g): whole soybeans, excellent as snacks or in bowls. Nutritional yeast: cheesy flavor, adds B vitamins and 8g protein per 2 tablespoons.",
+      "summary": "High-protein plant foods and how to incorporate them into meals."
+    },
+    {
+      "id": "vegan_substitutes",
+      "title": "Essential Vegan Substitutions",
+      "source": "https://www.peta.org/living/food/vegan-substitutes/",
+      "content": "Eggs: flax egg (1 tbsp flax + 3 tbsp water) for binding; aquafaba (chickpea liquid) for meringues; mashed banana for moisture. Milk: oat milk (creamy, neutral), almond milk (light), coconut milk (rich, for curries). Butter: coconut oil or vegan butter for baking. Cheese: nutritional yeast for cheesy flavor; cashew cream for ricotta; store-bought vegan cheese for melting. Honey: maple syrup or agave nectar. Cream: full-fat coconut milk. Meat: jackfruit (pulled pork texture), mushrooms (umami), cauliflower (buffalo wings), lentils (ground meat).",
+      "summary": "How to replace animal products in any recipe with plant-based alternatives."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Travel Planning Guide",
+  "description": "Tips and resources for planning memorable trips",
+  "icon": "✈️",
+  "default_mode": "learn",
+  "quiz_questions": 10,
+  "documents": [
+    {
+      "id": "travel_booking",
+      "title": "Flight and Hotel Booking Tips",
+      "source": "https://www.skyscanner.com/tips-and-inspiration/when-to-book-flights",
+      "content": "Book flights 6-8 weeks ahead for domestic travel, 2-3 months for international. Tuesdays and Wednesdays often have lower fares. Use incognito mode when searching to avoid price tracking. Set up price alerts on sites like Google Flights, Skyscanner, or Kayak. Consider nearby airports for better deals. For hotels, book directly for perks and flexibility. Check prices on multiple platforms: Booking.com, Hotels.com, and the hotel's own site. Loyalty programs accumulate points for free nights. Read recent reviews, not just ratings.",
+      "summary": "Strategies for finding the best deals on flights and accommodations."
+    },
+    {
+      "id": "travel_packing",
+      "title": "Smart Packing Strategies",
+      "source": "https://www.ricksteves.com/travel-tips/packing-light",
+      "content": "Pack light: aim for a carry-on to avoid baggage fees and delays. Roll clothes instead of folding to save space and reduce wrinkles. Use packing cubes to organize by outfit or category. Wear your bulkiest items (jacket, boots) on the plane. Bring versatile pieces in coordinating colors. Essential toiletries: solid shampoo bars, refillable bottles under 3.4oz. Always pack: phone charger, universal adapter, copies of important documents, basic first-aid kit, reusable water bottle. Leave room for souvenirs on the return trip.",
+      "summary": "How to pack efficiently and travel with less luggage stress."
+    },
+    {
+      "id": "travel_safety",
+      "title": "Travel Safety Essentials",
+      "source": "https://travel.state.gov/content/travel/en/international-travel.html",
+      "content": "Register with your country's embassy program (US: STEP program) before international trips. Keep digital and physical copies of passport, visa, and insurance. Use hotel safes for valuables. Avoid displaying expensive jewelry or electronics. Stay aware of common scams: fake taxis, overcharging, distraction theft. Share your itinerary with someone at home. Research local emergency numbers. Get travel insurance covering medical emergencies and trip cancellation. Check travel advisories before booking. Trust your instincts—if something feels wrong, leave.",
+      "summary": "How to stay safe and prepared while traveling abroad."
+    },
+    {
+      "id": "travel_budget",
+      "title": "Budget Travel Tips",
+      "source": "https://www.nomadicmatt.com/travel-tips/",
+      "content": "Travel during shoulder season (spring/fall) for lower prices and fewer crowds. Eat where locals eat, not tourist areas. Use public transportation instead of taxis. Stay in hostels, Airbnbs, or guesthouses. Cook some meals if you have kitchen access. Free activities: walking tours, parks, museums on free days, hiking. Get city tourist cards for bundled attractions and transit. Use apps like Hopper for flight deals, Rome2Rio for transport options. Student and senior discounts apply to many attractions. Overnight buses or trains save on accommodation costs.",
+      "summary": "How to travel more while spending less money."
+    },
+    {
+      "id": "travel_planning",
+      "title": "Trip Planning Process",
+      "source": "https://www.lonelyplanet.com/articles/how-to-plan-a-trip",
+      "content": "Start with why: relaxation, adventure, culture, or food? Research destinations that match your goals. Check visa requirements and passport validity (6 months beyond travel dates). Plan a rough itinerary but leave flexibility. Book must-see attractions in advance for popular destinations. Balance activities with downtime—overplanning leads to exhaustion. Download offline maps and translation apps. Learn basic phrases in the local language. Notify your bank of travel dates. Consider jet lag: plan light activities for arrival day. Create a shared document with reservations, addresses, and contact info.",
+      "summary": "Step-by-step approach to planning a well-organized trip."
+    }
+  ]
+}

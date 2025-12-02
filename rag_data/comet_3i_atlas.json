@@ -1,0 +1,51 @@
+{
+  "name": "Ask about 3I/ATLAS",
+  "description": "Information about the interstellar comet 3I/ATLAS discovered in 2025",
+  "icon": "☄️",
+  "default_mode": "learn",
+  "quiz_questions": 10,
+  "documents": [
+    {
+      "id": "atlas_discovery",
+      "title": "Discovery of 3I/ATLAS",
+      "source": "https://science.nasa.gov/solar-system/comets/3i-atlas/",
+      "content": "3I/ATLAS was discovered on July 1, 2025, by the NASA-funded ATLAS (Asteroid Terrestrial-impact Last Alert System) survey telescope in Rio Hurtado, Chile. It is the third confirmed interstellar object to pass through our solar system, following 1I/'Oumuamua (2017) and 2I/Borisov (2019). Pre-discovery observations from the Zwicky Transient Facility and other telescopes traced sightings back to May 2025. The comet was initially difficult to spot because it was passing in front of the Galactic Center's dense star fields.",
+      "summary": "How and when the interstellar comet 3I/ATLAS was first detected by astronomers."
+    },
+    {
+      "id": "atlas_trajectory",
+      "title": "Orbital Path and Trajectory",
+      "source": "https://en.wikipedia.org/wiki/3I/ATLAS",
+      "content": "3I/ATLAS follows a hyperbolic trajectory, meaning it is not gravitationally bound to our Sun and is merely passing through the solar system. The comet reached its closest point to the Sun (perihelion) on October 29, 2025, at a distance of 1.36 AU (about 126 million miles), between Earth's and Mars' orbits. It passed about 18 million miles from Mars on October 3, 2025. The closest approach to Earth will be approximately 1.8 AU (170 million miles). The comet poses no threat to Earth and appears to have originated from the Milky Way's disk, possibly being over 7 billion years old.",
+      "summary": "The interstellar comet's path through our solar system and closest approaches."
+    },
+    {
+      "id": "atlas_composition",
+      "title": "Chemical Composition",
+      "source": "https://science.nasa.gov/solar-system/comets/3i-atlas/",
+      "content": "Observations by the James Webb Space Telescope revealed that 3I/ATLAS is unusually rich in carbon dioxide, containing small amounts of water ice, water vapor, carbon monoxide, and carbonyl sulfide. The Very Large Telescope detected cyanide gas and atomic nickel vapor at concentrations similar to Solar System comets. The comet appears to be metal-bearing and carbonaceous. Its high activity even at 6.4 AU from the Sun in May 2025 suggests sublimation of volatile ices other than water, which typically requires closer solar proximity to activate.",
+      "summary": "What 3I/ATLAS is made of based on spectroscopic observations."
+    },
+    {
+      "id": "atlas_physical",
+      "title": "Physical Characteristics",
+      "source": "https://en.wikipedia.org/wiki/3I/ATLAS",
+      "content": "Hubble Space Telescope images suggest the nucleus diameter is between 0.32 and 5.6 km (0.2 to 3.5 miles), with the most likely size being less than 1 km. The comet displays a coma (glowing cloud of gas and dust) and multiple jets. One unusual feature is a stable anti-tail pointing toward the Sun, which defies typical comet physics where tails are pushed away by solar radiation. The comet's light shows pulsating variability with a period of about 16.16 hours, possibly caused by periodic jet activity rather than nucleus rotation.",
+      "summary": "Size, appearance, and unusual physical features of the interstellar comet."
+    },
+    {
+      "id": "atlas_observations",
+      "title": "NASA Missions Observing 3I/ATLAS",
+      "source": "https://www.cnn.com/2025/11/19/science/comet-3i-atlas-nasa-images",
+      "content": "Multiple NASA missions have observed 3I/ATLAS: the Hubble and James Webb Space Telescopes, the STEREO solar observatory, Mars rovers Perseverance and Curiosity, the MAVEN Mars orbiter, Lucy spacecraft (en route to Trojan asteroids), Psyche spacecraft, PUNCH mission, SPHEREx Observatory, and TESS. The ESA's ExoMars Trace Gas Orbiter captured images from Mars orbit, about 10 times closer than Earth telescopes. These varied vantage points helped scientists understand the comet's three-dimensional structure and improve trajectory predictions tenfold.",
+      "summary": "Space missions and telescopes that captured data on the interstellar visitor."
+    },
+    {
+      "id": "atlas_significance",
+      "title": "Scientific Significance",
+      "source": "https://www.space.com/astronomy/comets/4-key-things-nasa-just-revealed-about-the-interstellar-comet-3i-atlas",
+      "content": "3I/ATLAS offers scientists a rare opportunity to study material formed around another star. Comparing its ancient dust to Solar System comet dust reveals information about planetary system formation across the galaxy. Unlike 1I/'Oumuamua, which showed no clear cometary activity, 3I/ATLAS is clearly active with visible jets and a growing tail. NASA confirmed it is of natural origin, not an artificial object, despite internet speculation during a government shutdown when NASA couldn't release images. Studies suggest interstellar objects pass through our solar system regularly, with almost always one present at any time.",
+      "summary": "Why studying this interstellar comet matters for astronomy and planetary science."
+    }
+  ]
+}

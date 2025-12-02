@@ -1,0 +1,44 @@
+{
+  "name": "Classic Movie Trivia",
+  "description": "Fun facts and behind-the-scenes stories from beloved films",
+  "icon": "🎬",
+  "default_mode": "quiz",
+  "quiz_questions": 10,
+  "documents": [
+    {
+      "id": "movie_wizard_oz",
+      "title": "The Wizard of Oz (1939) Secrets",
+      "source": "https://www.mentalfloss.com/article/51562/50-wonderful-facts-about-wizard-oz",
+      "content": "The famous ruby slippers were actually silver in the original book but changed to red to showcase the new Technicolor film technology. Multiple pairs were made, and one sold at auction for $2 million. The Tin Man's makeup was so toxic that the original actor, Buddy Ebsen, had a severe allergic reaction and was replaced. The horse in Emerald City changed colors because it was coated in different flavors of Jell-O powder. Margaret Hamilton (Wicked Witch) suffered burns during filming when a special effect malfunctioned.",
+      "summary": "Fascinating behind-the-scenes facts from the classic 1939 musical fantasy."
+    },
+    {
+      "id": "movie_jaws",
+      "title": "Jaws (1975) Production Nightmares",
+      "source": "https://www.imdb.com/title/tt0073195/trivia/",
+      "content": "The mechanical shark, nicknamed 'Bruce' after Spielberg's lawyer, constantly malfunctioned due to saltwater damage. This forced Spielberg to show the shark less, accidentally creating more suspense. The famous line 'You're gonna need a bigger boat' was improvised by Roy Scheider. Filming ran over budget and schedule so badly that Universal almost shut it down. Despite the chaos, it became the first 'summer blockbuster' and invented modern movie marketing. The Indianapolis speech by Robert Shaw was partially written by him while drunk.",
+      "summary": "How technical disasters made Jaws accidentally brilliant."
+    },
+    {
+      "id": "movie_star_wars",
+      "title": "Star Wars (1977) Origins",
+      "source": "https://www.starwars.com/news/15-star-wars-facts",
+      "content": "Darth Vader's breathing sound was created by recording breathing through a scuba regulator. Harrison Ford was originally hired just to read lines for auditions but impressed George Lucas so much he got the part. The word 'Wookiee' came from an ad-lib in Lucas's earlier film when an actor said 'I think I ran over a Wookiee.' R2-D2's name came from sound editing lingo: Reel 2, Dialogue 2. Chewbacca was inspired by Lucas's dog, an Alaskan Malamute who rode in the passenger seat. The film was almost titled 'Adventures of Luke Starkiller.'",
+      "summary": "Little-known origins of Star Wars characters, sounds, and names."
+    },
+    {
+      "id": "movie_godfather",
+      "title": "The Godfather (1972) Trivia",
+      "source": "https://www.vanityfair.com/hollywood/2022/03/godfather-50th-anniversary-making-of",
+      "content": "Marlon Brando stuffed his cheeks with cotton balls to achieve Don Corleone's bulldog appearance. The studio wanted anyone but Brando and Pacino—they suggested Robert Redford and Ryan O'Neal for Michael. The cat in the opening scene was a stray found on the lot; its purring was so loud it almost ruined the audio. The horse head was real, obtained from a dog food company. Francis Ford Coppola was almost fired multiple times during production. The wedding scene used actual members of Coppola's family as extras.",
+      "summary": "Behind-the-scenes secrets from the making of The Godfather."
+    },
+    {
+      "id": "movie_titanic",
+      "title": "Titanic (1997) Facts",
+      "source": "https://www.britannica.com/topic/Titanic-film-1997",
+      "content": "James Cameron made 12 deep-sea dives to the actual Titanic wreck for research. The film cost $200 million, making it the most expensive movie ever at the time—many predicted it would flop. The drawing Jack makes of Rose was actually drawn by Cameron himself (his hands appear in the scene). The elderly couple seen embracing in bed as water floods in were based on real passengers, Isidor and Ida Straus, who refused to be separated. Kate Winslet was one of the few cast members who didn't wear a wetsuit, which led to her getting pneumonia.",
+      "summary": "Interesting facts about the record-breaking 1997 epic romance."
+    }
+  ]
+}

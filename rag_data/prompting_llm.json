@@ -1,0 +1,44 @@
+{
+  "name": "How to Prompt an LLM",
+  "description": "Best practices for crafting effective prompts for large language models",
+  "icon": "🤖",
+  "default_mode": "learn",
+  "quiz_questions": 10,
+  "documents": [
+    {
+      "id": "prompt_basics",
+      "title": "Prompting Fundamentals",
+      "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "content": "Effective LLM prompting starts with clarity. Be specific about what you want the model to do. Instead of asking 'Write something about dogs', say 'Write a 200-word informative paragraph about the history of golden retrievers as family pets.' Include context, constraints, and desired output format. The more precise your instructions, the better the response. Good prompts reduce ambiguity and guide the model toward your intended outcome.",
+      "summary": "Core principles of writing clear, specific prompts for LLMs."
+    },
+    {
+      "id": "prompt_techniques",
+      "title": "Advanced Prompting Techniques",
+      "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/chain-of-thought",
+      "content": "Chain-of-thought prompting asks the model to show its reasoning step by step. Add phrases like 'Let's think through this step by step' or 'Explain your reasoning.' Few-shot prompting provides examples of desired input-output pairs before your actual question. Zero-shot prompting relies on clear instructions without examples. Role prompting sets context by asking the model to act as an expert: 'You are a senior software engineer reviewing code.' Each technique suits different use cases.",
+      "summary": "Chain-of-thought, few-shot, zero-shot, and role-based prompting methods."
+    },
+    {
+      "id": "prompt_structure",
+      "title": "Structuring Your Prompts",
+      "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-xml-tags",
+      "content": "Use XML tags or markdown to structure complex prompts. Separate instructions from content: <instructions>Summarize the following article</instructions><article>Your text here</article>. Use numbered lists for multi-step tasks. Specify output format explicitly: 'Respond in JSON format with keys: title, summary, keywords.' Break complex requests into smaller parts. Add constraints: word limits, tone requirements, or forbidden topics. Clear structure helps the model parse and follow your intentions.",
+      "summary": "How to organize prompts using tags, sections, and clear formatting."
+    },
+    {
+      "id": "prompt_mistakes",
+      "title": "Common Prompting Mistakes",
+      "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct",
+      "content": "Avoid vague requests like 'Make it better' without specifying what 'better' means. Don't overload prompts with too many unrelated instructions. Avoid contradictory requirements. Don't assume the model knows your context—provide necessary background. Avoid leading questions that bias responses. Don't forget to specify the desired length or format. Common mistake: asking 'Can you...' instead of directly stating what you want. The model will almost always say yes rather than doing the task.",
+      "summary": "Pitfalls to avoid when writing prompts for AI models."
+    },
+    {
+      "id": "prompt_iteration",
+      "title": "Iterative Prompt Refinement",
+      "source": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-generator",
+      "content": "Treat prompting as an iterative process. Start with a basic prompt, analyze the output, identify gaps, and refine. If the response is too long, add length constraints. If it's off-topic, add more context or examples. Keep a prompt library of what works. Test variations systematically. Use temperature settings: lower (0.0-0.3) for factual tasks, higher (0.7-1.0) for creative ones. Document successful prompts for reuse. Prompt engineering is a skill that improves with practice.",
+      "summary": "How to improve prompts through testing and systematic refinement."
+    }
+  ]
+}
