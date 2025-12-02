@@ -1,5 +1,9 @@
 # 🎓 Multi-RAG Q&A Chatbot with Learn & Quiz Modes
 
+[![GitHub](https://img.shields.io/badge/GitHub-knightsri%2FChatBot-blue?logo=github)](https://github.com/knightsri/ChatBot)
+[![Python](https://img.shields.io/badge/Python-3.9+-green?logo=python)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-red?logo=streamlit)](https://streamlit.io)
+
 **Learn how RAG works by asking questions OR test your knowledge with AI-generated quizzes!**
 
 This application demonstrates RAG (Retrieval-Augmented Generation) through two interactive modes — perfect for learning, interview prep, or just having fun with trivia!
