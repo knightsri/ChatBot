@@ -25,3 +25,7 @@ python-dotenv>=1.0.0
 
 # Streamlit
 streamlit>=1.30.0
+
+# Document parsing (local files)
+pypdf>=4.0.0
+python-docx>=1.0.0

@@ -6,7 +6,9 @@
 
 **Learn how RAG works by asking questions OR test your knowledge with AI-generated quizzes!**
 
-This application demonstrates RAG (Retrieval-Augmented Generation) through two interactive modes — perfect for learning, interview prep, or just having fun with trivia!
+This application demonstrates RAG (Retrieval-Augmented Generation) through two interactive modes — perfect for learning, interview prep, resume screening, or just having fun with trivia!
+
+**Now supports local files!** Import PDFs, Word docs, and text files from your folders.
 
 ---
 
@@ -236,7 +238,37 @@ def flashcard_mode():
 | 🥗 | Vegan Recipes | Learn | Plant-based cooking tips |
 | ✈️ | Travel Planning | Learn | Trip planning strategies |
 | 🎬 | Movie Trivia | **Quiz** | Behind-the-scenes film facts |
-| 🦊 | Animal Facts | Learn | Amazing animal behaviors |
+| 📋 | Resume Screening | Learn | Compare candidates from local files |
+| 📚 | Research Papers | Learn | Analyze academic papers |
+| 📝 | Meeting Notes | Learn | Track decisions & action items |
+| ⚖️ | Legal Contracts | Learn | Review & compare contracts |
+
+---
+
+## 📁 Supported Document Sources
+
+### URLs (Web Pages)
+Add URLs to fetch and index web content. Options:
+- **Use Browser**: Enable Playwright for JavaScript-rendered pages
+- **Crawl Child Links**: Automatically fetch linked pages
+
+### Local Files (NEW!)
+Import documents from local folders:
+
+| Format | Extensions |
+|--------|------------|
+| PDF | `.pdf` |
+| Word | `.docx`, `.doc` |
+| Text | `.txt`, `.md` |
+
+**How to import:**
+1. Click "➕ Add Documents" in sidebar
+2. Select "📂 Local Folder"
+3. Enter folder path (e.g., `C:\Documents\Resumes`)
+4. Toggle "Include subfolders" if needed
+5. Click "📂 Scan & Import"
+
+Documents are persisted in the knowledge base JSON and survive restarts.
 
 ---
 
@@ -255,8 +287,11 @@ your_project/
     ├── comet_3i_atlas.json
     ├── vegan_recipes.json
     ├── travel_planning.json
-    ├── movie_trivia.json     # default_mode: "quiz"
-    └── animal_facts.json
+    ├── movie_trivia.json      # default_mode: "quiz"
+    ├── resume_screening.json  # For comparing resumes
+    ├── research_papers.json   # For academic papers
+    ├── meeting_notes.json     # For meeting transcripts
+    └── legal_contracts.json   # For contract review
 ```
 
 ---
@@ -304,24 +339,56 @@ In Quiz Mode, the LLM doesn't just answer — it also judges if YOUR answer is c
 
 ## 🎯 Try These Experiments
 
-### Experiment 1: Quiz vs Learn
+### 📋 HR Resume Screening
+
+1. Select "📋 Resume Screening" from the sidebar
+2. Import a folder of resumes (PDFs/DOCXs)
+3. Ask: *"Who are the top 3 candidates for a Python developer role?"*
+4. Ask: *"Compare the leadership experience across all candidates"*
+
+### 📚 Research Paper Synthesis
+
+1. Select "📚 Research Papers" and import academic PDFs
+2. Ask: *"What methodologies were used across these studies?"*
+3. Switch to Quiz mode to test your understanding!
+
+### 📝 Meeting Notes Analysis
+
+1. Select "📝 Meeting Notes" and import transcripts (TXT/MD)
+2. Ask: *"What decisions were made about the API redesign?"*
+3. Ask: *"List all action items and who owns them"*
+
+### ⚖️ Contract Review
+
+1. Select "⚖️ Legal Contracts" and import contracts
+2. Ask: *"Compare the termination clauses across all contracts"*
+3. Ask: *"Which contract has the most favorable payment terms?"*
+
+### 🎬 Quiz vs Learn Mode
 
 1. Select "Movie Trivia" (starts in Quiz mode)
-2. Take the quiz
-3. Switch to Learn mode
-4. Ask questions about what you got wrong
+2. Take the quiz and note what you got wrong
+3. Switch to Learn mode and ask about those topics
+4. Switch back to Quiz — did you improve?
 
-### Experiment 2: Create Your Own Quiz
+### 🤖 Master Prompt Engineering
 
-1. Create a new JSON in `rag_data/` with `"default_mode": "quiz"`
-2. Add content about a topic you want to study
-3. Quiz yourself!
+1. Select "LLM Prompting" knowledge base
+2. Ask: *"What is chain-of-thought prompting?"*
+3. Ask: *"Give me a template for few-shot prompting"*
+4. Switch to Quiz mode to test your knowledge!
 
-### Experiment 3: Interview Prep
+### ✈️ Plan Your Next Trip
 
-1. Add documents about your interview topic
-2. Set `"quiz_questions": 20` for a longer session
-3. Practice until you ace it!
+1. Select "Travel Planning"
+2. Ask: *"What's the best time to book flights?"*
+3. Ask: *"Give me a packing checklist for a week trip"*
+
+### 🥗 Vegan Cooking Ideas
+
+1. Select "Vegan Recipes"
+2. Ask: *"What are good protein sources for vegans?"*
+3. Ask: *"How do I make crispy tofu?"*
 
 ---
 

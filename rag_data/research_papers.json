@@ -1,0 +1,8 @@
+{
+    "name": "Research Papers",
+    "description": "Analyze and synthesize academic papers and research documents. Import PDFs to explore findings, compare methodologies, and summarize conclusions across multiple papers.",
+    "icon": "📚",
+    "default_mode": "learn",
+    "quiz_questions": 15,
+    "documents": []
+}

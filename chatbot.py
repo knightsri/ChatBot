@@ -61,8 +61,136 @@ RAG_DATA_FOLDER = "rag_data"
 LOGO_PATH = "logo.png"
 DEFAULT_QUIZ_QUESTIONS = 10
 
+# Supported file extensions for local documents
+SUPPORTED_EXTENSIONS = {'.pdf', '.docx', '.doc', '.txt', '.md'}
+
 # OpenRouter configuration
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+
+
+# =============================================================================
+# LOCAL FILE PARSING FUNCTIONS
+# =============================================================================
+
+def read_pdf_content(file_path: str) -> Optional[str]:
+    """Extract text content from a PDF file using pypdf."""
+    try:
+        from pypdf import PdfReader
+        reader = PdfReader(file_path)
+        text_parts = []
+        for page in reader.pages:
+            text = page.extract_text()
+            if text:
+                text_parts.append(text)
+        content = "\n\n".join(text_parts)
+        return content if len(content) > 50 else None
+    except Exception as e:
+        st.warning(f"Could not read PDF {os.path.basename(file_path)}: {e}")
+        return None
+
+
+def read_docx_content(file_path: str) -> Optional[str]:
+    """Extract text content from a DOCX file using python-docx."""
+    try:
+        from docx import Document
+        doc = Document(file_path)
+        text_parts = []
+        for para in doc.paragraphs:
+            if para.text.strip():
+                text_parts.append(para.text)
+        # Also extract text from tables
+        for table in doc.tables:
+            for row in table.rows:
+                row_text = [cell.text.strip() for cell in row.cells if cell.text.strip()]
+                if row_text:
+                    text_parts.append(" | ".join(row_text))
+        content = "\n\n".join(text_parts)
+        return content if len(content) > 50 else None
+    except Exception as e:
+        st.warning(f"Could not read DOCX {os.path.basename(file_path)}: {e}")
+        return None
+
+
+def read_text_content(file_path: str) -> Optional[str]:
+    """Read content from a text or markdown file."""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        return content if len(content) > 50 else None
+    except UnicodeDecodeError:
+        try:
+            with open(file_path, 'r', encoding='latin-1') as f:
+                content = f.read()
+            return content if len(content) > 50 else None
+        except Exception as e:
+            st.warning(f"Could not read {os.path.basename(file_path)}: {e}")
+            return None
+    except Exception as e:
+        st.warning(f"Could not read {os.path.basename(file_path)}: {e}")
+        return None
+
+
+def read_local_file(file_path: str) -> Optional[str]:
+    """
+    Read content from a local file based on its extension.
+    Supports: PDF, DOCX, DOC, TXT, MD
+    """
+    ext = os.path.splitext(file_path)[1].lower()
+    
+    if ext == '.pdf':
+        return read_pdf_content(file_path)
+    elif ext in ('.docx', '.doc'):
+        return read_docx_content(file_path)
+    elif ext in ('.txt', '.md'):
+        return read_text_content(file_path)
+    else:
+        return None
+
+
+def scan_folder_for_documents(folder_path: str, recursive: bool = False) -> List[str]:
+    """
+    Scan a folder for supported document files.
+    
+    Args:
+        folder_path: Path to the folder to scan
+        recursive: If True, scan all subdirectories. If False, only top-level files.
+    
+    Returns:
+        List of absolute file paths to supported documents.
+    """
+    if not os.path.isdir(folder_path):
+        return []
+    
+    found_files = []
+    
+    if recursive:
+        for root, dirs, files in os.walk(folder_path):
+            for file in files:
+                ext = os.path.splitext(file)[1].lower()
+                if ext in SUPPORTED_EXTENSIONS:
+                    found_files.append(os.path.abspath(os.path.join(root, file)))
+    else:
+        for file in os.listdir(folder_path):
+            file_path = os.path.join(folder_path, file)
+            if os.path.isfile(file_path):
+                ext = os.path.splitext(file)[1].lower()
+                if ext in SUPPORTED_EXTENSIONS:
+                    found_files.append(os.path.abspath(file_path))
+    
+    return sorted(found_files)
+
+
+def get_file_type_icon(file_path: str) -> str:
+    """Get an appropriate icon for a file based on its extension."""
+    ext = os.path.splitext(file_path)[1].lower()
+    icons = {
+        '.pdf': '📄',
+        '.docx': '📝',
+        '.doc': '📝',
+        '.txt': '📃',
+        '.md': '📃',
+    }
+    return icons.get(ext, '📁')
 
 
 def get_api_config() -> Tuple[Optional[str], str, str]:
@@ -958,47 +1086,118 @@ def main():
         
         # Add Documents
         with st.expander("➕ Add Documents", expanded=False):
-            st.caption("Add URLs to current knowledge base")
-            urls_input = st.text_area("URLs (one per line)", height=80, label_visibility="collapsed",
-                                      placeholder="https://example.com/page1")
+            # Tab-like selection for document source type
+            source_type = st.radio(
+                "Source type:",
+                ["📂 Local Folder", "🌐 URLs"],
+                horizontal=True,
+                label_visibility="collapsed"
+            )
             
-            if st.button("🔍 Fetch & Add", use_container_width=True):
-                if not get_api_config()[0]:
-                    st.error("API key required")
-                elif urls_input.strip():
-                    urls = [u.strip() for u in urls_input.strip().split("\n") if u.strip()]
-                    if urls:
-                        added = 0
-                        
-                        for url in urls:
-                            doc_id = generate_doc_id(url)
-                            if any(d["id"] == doc_id for d in st.session_state.current_docs):
-                                st.warning(f"Already exists: {url[:40]}...")
-                                continue
+            if source_type == "📂 Local Folder":
+                st.caption("Import documents from a local folder (PDF, DOCX, TXT, MD)")
+                folder_path = st.text_input(
+                    "Folder path",
+                    placeholder=r"C:\Documents\Resumes",
+                    help="Enter the full path to a folder containing documents"
+                )
+                include_subfolders = st.checkbox("Include subfolders", value=False)
+                
+                if st.button("📂 Scan & Import", use_container_width=True):
+                    if not get_api_config()[0]:
+                        st.error("API key required for summarization")
+                    elif folder_path.strip():
+                        if not os.path.isdir(folder_path):
+                            st.error(f"Folder not found: {folder_path}")
+                        else:
+                            files = scan_folder_for_documents(folder_path, recursive=include_subfolders)
+                            if not files:
+                                st.warning("No supported files found (PDF, DOCX, TXT, MD)")
+                            else:
+                                st.info(f"Found {len(files)} file(s). Importing...")
+                                added = 0
+                                progress = st.progress(0)
+                                
+                                for i, file_path in enumerate(files):
+                                    progress.progress((i + 1) / len(files))
+                                    doc_id = generate_doc_id(file_path)
+                                    
+                                    if any(d["id"] == doc_id for d in st.session_state.current_docs):
+                                        continue  # Skip duplicates
+                                    
+                                    content = read_local_file(file_path)
+                                    if content and len(content) > 100:
+                                        file_name = os.path.basename(file_path)
+                                        title, summary = summarize_content(content, file_name)
+                                        st.session_state.current_docs.append({
+                                            "id": doc_id,
+                                            "title": title,
+                                            "source": file_path,
+                                            "source_type": "file",
+                                            "content": content,
+                                            "summary": summary
+                                        })
+                                        added += 1
+                                
+                                if added > 0:
+                                    save_rag_documents(st.session_state.current_rag,
+                                                     st.session_state.rag_metadata,
+                                                     st.session_state.current_docs)
+                                    st.session_state.vs_needs_rebuild = True
+                                    st.success(f"✓ Imported {added} document(s)")
+                                    st.rerun()
+                                else:
+                                    st.warning("No new documents imported (may already exist or be empty)")
+            
+            else:  # URLs
+                st.caption("Add URLs to current knowledge base")
+                urls_input = st.text_area("URLs (one per line)", height=80, label_visibility="collapsed",
+                                          placeholder="https://example.com/page1")
+                
+                if st.button("🔍 Fetch & Add", use_container_width=True):
+                    if not get_api_config()[0]:
+                        st.error("API key required")
+                    elif urls_input.strip():
+                        urls = [u.strip() for u in urls_input.strip().split("\n") if u.strip()]
+                        if urls:
+                            added = 0
                             
-                            content = fetch_url_content(url, use_browser, crawl_children)
-                            if content and len(content) > 100:
-                                title, summary = summarize_content(content, url)
-                                st.session_state.current_docs.append({
-                                    "id": doc_id, "title": title, "source": url,
-                                    "content": content, "summary": summary
-                                })
-                                added += 1
-                        
-                        if added > 0:
-                            save_rag_documents(st.session_state.current_rag, 
-                                             st.session_state.rag_metadata,
-                                             st.session_state.current_docs)
-                            st.session_state.vs_needs_rebuild = True
-                            st.success(f"✓ Added {added} document(s)")
-                            st.rerun()
+                            for url in urls:
+                                doc_id = generate_doc_id(url)
+                                if any(d["id"] == doc_id for d in st.session_state.current_docs):
+                                    st.warning(f"Already exists: {url[:40]}...")
+                                    continue
+                                
+                                content = fetch_url_content(url, use_browser, crawl_children)
+                                if content and len(content) > 100:
+                                    title, summary = summarize_content(content, url)
+                                    st.session_state.current_docs.append({
+                                        "id": doc_id, "title": title, "source": url,
+                                        "source_type": "url",
+                                        "content": content, "summary": summary
+                                    })
+                                    added += 1
+                            
+                            if added > 0:
+                                save_rag_documents(st.session_state.current_rag, 
+                                                 st.session_state.rag_metadata,
+                                                 st.session_state.current_docs)
+                                st.session_state.vs_needs_rebuild = True
+                                st.success(f"✓ Added {added} document(s)")
+                                st.rerun()
         
-        # Document List
+        # Document List with file type icons
         st.markdown(f"**Documents ({len(st.session_state.current_docs)}):**")
         for doc in st.session_state.current_docs:
             col1, col2 = st.columns([5, 1])
             with col1:
-                st.markdown(f"**{doc['title'][:30]}**")
+                # Show icon based on source type
+                source = doc.get('source', '')
+                if doc.get('source_type') == 'file' or (os.path.exists(source) if source else False):
+                    icon = get_file_type_icon(source)
+                else:
+                    icon = '🌐'
+                st.markdown(f"{icon} **{doc['title'][:30]}**")
             with col2:
                 if st.button("🗑️", key=f"del_{doc['id']}", help="Remove"):
                     st.session_state.current_docs = [d for d in st.session_state.current_docs if d["id"] != doc["id"]]
@@ -1039,7 +1238,7 @@ def main():
         st.stop()
     
     if not st.session_state.current_docs:
-        st.warning("⚠️ No documents in this knowledge base. Add some URLs!")
+        st.warning("⚠️ No documents in this knowledge base. Add some URLs and/or Folders!")
         st.stop()
     
     # Build vectorstore

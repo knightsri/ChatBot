@@ -1,0 +1,8 @@
+{
+    "name": "Meeting Notes",
+    "description": "Track decisions, action items, and discussions across meeting notes and transcripts. Import notes to find 'What did we decide about X?' or 'Who owns the API redesign task?'",
+    "icon": "📝",
+    "default_mode": "learn",
+    "quiz_questions": 10,
+    "documents": []
+}

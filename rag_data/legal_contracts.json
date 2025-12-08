@@ -1,0 +1,8 @@
+{
+    "name": "Legal Contracts",
+    "description": "Review and compare legal documents, contracts, and agreements. Import PDFs/DOCXs to analyze termination clauses, liability terms, payment schedules, and more across multiple contracts.",
+    "icon": "⚖️",
+    "default_mode": "learn",
+    "quiz_questions": 10,
+    "documents": []
+}
